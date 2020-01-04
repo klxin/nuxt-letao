@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h2>我是首页</h2>
+    <!-- eslint-disable -->
+    <van-button type="primary">主要按钮</van-button>
   </div>
 </template>
 
@@ -8,9 +9,4 @@
 </script>
 
 <style lang="less" scoped>
-.container {
-  h2 {
-    color: cyan;
-  }
-}
 </style>

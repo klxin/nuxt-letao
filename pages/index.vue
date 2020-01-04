@@ -4,20 +4,19 @@
     <!-- 轮播图区域 -->
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img :src="image" />
+        <img :src="image.img" />
       </van-swipe-item>
     </van-swipe>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  data () {
+  async asyncData () {
+    const { data } = await axios.get(`http://www.liulongbin.top:3005/api/getlunbo`)
     return {
-      images: [
-        'https://img.yzcdn.cn/vant/apple-1.jpg',
-        'https://img.yzcdn.cn/vant/apple-2.jpg'
-      ]
+      images: data.message
     }
   }
 }
@@ -29,5 +28,11 @@ export default {
   top: 40px;
   bottom: 40px;
   width: 100%;
+  .van-swipe {
+    height: 200px;
+    img {
+      height: 100%;
+    }
+  }
 }
 </style>

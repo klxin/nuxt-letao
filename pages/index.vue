@@ -43,10 +43,17 @@ import { getLunbo } from '../utils/fetch.js'
 export default {
   async asyncData () {
     // const { data } = await axios.get(`http://www.liulongbin.top:3005/api/getlunbo`)
-    const data = await getLunbo()
+    const data = await getLunbo().catch(err => err)
+    const images = data.name !== 'Error' ? data.message : []
+    const errTitle = data.name !== 'Error' ? null : data.message
     return {
-      images: data.message
+      images,
+      errTitle
     }
+  },
+  mounted () {
+    /* eslint-disable */
+    if (this.errTitle) this.$toast(this.errTitle)
   }
 }
 </script>

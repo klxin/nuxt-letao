@@ -1,7 +1,7 @@
 <template>
   <div class="newslist">
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <van-card v-for="(item, index) in list" :key="index" :title="item.list" :thumb="item.img_url">
+      <van-card v-for="(item, index) in list" :key="index" :title="item.title" :thumb="item.img_url">
         <div slot="num">
           点击: {{ item.click }}次
         </div>
@@ -23,7 +23,7 @@ export default {
     }
   },
   async asyncData () {
-    const data = await getNewsList().catch(err => err)
+    const data = await getNewsList()
     const list = data.name !== 'Error' ? data.message : []
     const errTitle = data.name !== 'Error' ? null : data.message
     return {

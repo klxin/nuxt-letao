@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import Vant, { Toast } from 'vant'
+import Vant from 'vant'
 import 'vant/lib/index.css'
-Vue.use(Vant).use(Toast)
+Vue.use(Vant)

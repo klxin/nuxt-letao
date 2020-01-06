@@ -1,12 +1,12 @@
 <template>
   <div class="newslist">
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <van-card v-for="(item, index) in 50" :key="index" title="商品标题" thumb="https://img.yzcdn.cn/vant/t-thirt.jpg">
+      <van-card v-for="(item, index) in list" :key="index" :title="item.list" :thumb="item.img_url">
         <div slot="num">
-          点击: 3次
+          点击: {{ item.click }}次
         </div>
         <div slot="price">
-          发表时间: 2021-10-23
+          发表时间: {{ item.add_time }}
         </div>
       </van-card>
     </van-pull-refresh>
@@ -14,11 +14,26 @@
 </template>
 
 <script>
+import { getNewsList } from '../utils/fetch.js'
 export default {
   data () {
     return {
       count: 0,
       isLoading: false
+    }
+  },
+  async asyncData () {
+    const data = await getNewsList().catch(err => err)
+    const list = data.name !== 'Error' ? data.message : []
+    const errTitle = data.name !== 'Error' ? null : data.message
+    return {
+      list,
+      errTitle
+    }
+  },
+  mounted () {
+    if (this.errTitle) {
+      this.$toast(this.errTitle)
     }
   },
   methods: {

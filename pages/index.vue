@@ -9,7 +9,7 @@
     </van-swipe>
     <!-- 九宫格区域 -->
     <van-grid :border="false" :gutter="10" :column-num="3">
-      <van-grid-item>
+      <van-grid-item to="/newslist">
         <img src="../assets/images/menu1.png" alt="">
         <p>新闻资讯</p>
       </van-grid-item>

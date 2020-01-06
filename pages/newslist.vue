@@ -6,7 +6,7 @@
           点击: {{ item.click }}次
         </div>
         <div slot="price">
-          发表时间: {{ item.add_time }}
+          发表时间: {{ item.add_time| dateFormat }}
         </div>
       </van-card>
     </van-pull-refresh>

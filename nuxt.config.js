@@ -26,7 +26,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [{src: "~/plugins/vant/index.js"}],
+  plugins: [{src: "~/plugins/vant/index.js"}, {src: "~/filters/index.js"}],
   /*
   ** Nuxt.js dev-modules
   */

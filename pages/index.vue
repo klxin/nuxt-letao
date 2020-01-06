@@ -11,10 +11,12 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import { getLunbo } from '../utils/fetch.js'
 export default {
   async asyncData () {
-    const { data } = await axios.get(`http://www.liulongbin.top:3005/api/getlunbo`)
+    // const { data } = await axios.get(`http://www.liulongbin.top:3005/api/getlunbo`)
+    const data = await getLunbo()
     return {
       images: data.message
     }

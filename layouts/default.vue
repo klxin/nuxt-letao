@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="layout">
     <!-- 顶部导航栏 -->
     <van-nav-bar
       @click-left="$router.go(-1)"
@@ -7,7 +7,9 @@
       :left-text="$route.path !== '/' ? '返回': ''"
       title="移动电商·乐淘"
     />
-    <nuxt />
+    <div class="container">
+      <nuxt />
+    </div>
     <!-- 底部tabbar -->
     <!-- eslint-disable -->
     <van-tabbar v-model="active">
@@ -30,7 +32,14 @@ export default {
 </script>
 
 <style scoped lang="less">
-.container {
+.layout {
+  .container {
+    position: absolute;
+    top: 40px;
+    bottom: 50px;
+    width: 100%;
+    overflow-y: scroll;
+  }
   .van-nav-bar {
     background-color: #1989fa;
     height: 40px;

@@ -60,10 +60,6 @@ export default {
 
 <style lang="less" scoped>
 .home {
-  position: absolute;
-  top: 40px;
-  bottom: 40px;
-  width: 100%;
   .van-swipe {
     height: 200px;
     img {

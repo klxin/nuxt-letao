@@ -1,7 +1,7 @@
 <template>
   <div class="newslist">
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-      <van-card v-for="(item, index) in list" :key="index" :title="item.title" :thumb="item.img_url">
+      <van-card @click="linkToArticle(item.id)" v-for="(item, index) in list" :key="index" :title="item.title" :thumb="item.img_url">
         <div slot="num">
           点击: {{ item.click }}次
         </div>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { getNewsList } from '../utils/fetch.js'
+import { getNewsList } from '~/utils/fetch.js'
 export default {
   data () {
     return {
@@ -43,6 +43,10 @@ export default {
         this.isLoading = false
         this.count++
       }, 500)
+    },
+    linkToArticle (id) {
+      // 跳转到新闻详情页
+      this.$router.push(`newsarticle/${id}`)
     }
   }
 }
@@ -50,10 +54,6 @@ export default {
 
 <style lang="less" scoped>
 .newslist {
-  position: absolute;
-  top: 40px;
-  bottom: 50px;
-  width: 100%;
   .van-pull-refresh {
     position: relative;
     height: 100%;

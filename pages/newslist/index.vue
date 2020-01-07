@@ -22,13 +22,12 @@ export default {
       isLoading: false
     }
   },
-  async asyncData () {
+  async asyncData ({ handleErr }) {
     const data = await getNewsList()
-    const list = data.name !== 'Error' ? data.message : []
-    const errTitle = data.name !== 'Error' ? null : data.message
+    const obj = handleErr(data, [])
     return {
-      list,
-      errTitle
+      list: obj.message,
+      errTitle: obj.errTitle
     }
   },
   mounted () {

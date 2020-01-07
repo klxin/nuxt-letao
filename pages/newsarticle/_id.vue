@@ -8,6 +8,7 @@
       <span>点击次数：{{ article.click }}次</span>
     </div>
     <div class="article-content">
+      <!-- eslint-disable -->
       <div v-html="article.content" class="content"> </div>
     </div>
   </div>
@@ -16,13 +17,12 @@
 <script>
 import { getNewsArticle } from '~/utils/fetch.js'
 export default {
-  async asyncData ({ params }) {
+  async asyncData ({ params, handleErr }) {
     const data = await getNewsArticle(params.id)
-    const article = data.name !== 'Error' ? data.message : []
-    const errTitle = data.name !== 'Error' ? null : data.message
+    const obj = handleErr(data, [{}])
     return {
-      article: article[0],
-      errTitle
+      article: obj.message[0],
+      errTitle: obj.errTitle
     }
   },
   mounted () {

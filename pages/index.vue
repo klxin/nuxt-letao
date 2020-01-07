@@ -41,14 +41,13 @@
 // import axios from 'axios'
 import { getLunbo } from '../utils/fetch.js'
 export default {
-  async asyncData () {
+  async asyncData ({ handleErr }) {
     // const { data } = await axios.get(`http://www.liulongbin.top:3005/api/getlunbo`)
     const data = await getLunbo()
-    const images = data.name !== 'Error' ? data.message : []
-    const errTitle = data.name !== 'Error' ? null : data.message
+    const obj = handleErr(data, [])
     return {
-      images,
-      errTitle
+      images: obj.message,
+      errTitle: obj.errTitle
     }
   },
   mounted () {

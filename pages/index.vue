@@ -49,10 +49,6 @@ export default {
       images: obj.message,
       errTitle: obj.errTitle
     }
-  },
-  mounted () {
-    /* eslint-disable */
-    if (this.errTitle) this.$toast(this.errTitle)
   }
 }
 </script>

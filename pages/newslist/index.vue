@@ -30,11 +30,6 @@ export default {
       errTitle: obj.errTitle
     }
   },
-  mounted () {
-    if (this.errTitle) {
-      this.$toast(this.errTitle)
-    }
-  },
   methods: {
     onRefresh () {
       setTimeout(() => {

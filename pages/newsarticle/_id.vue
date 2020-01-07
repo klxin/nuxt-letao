@@ -24,10 +24,6 @@ export default {
       article: obj.message[0],
       errTitle: obj.errTitle
     }
-  },
-  mounted () {
-    // 如果出现错误提示用户
-    this.errTitle && this.$toast(this.errTitle)
   }
 }
 </script>
